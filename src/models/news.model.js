@@ -11,6 +11,10 @@ const newsSchema = new mongoose.Schema(
       type: String,
       required: [true, "Vui lòng nhập nội dung tin tức"],
     },
+    excerpt: {
+      type: String,
+      trim: true,
+    },
     author: {
       type: String,
       required: [true, "Vui lòng nhập tác giả"],
@@ -24,6 +28,11 @@ const newsSchema = new mongoose.Schema(
         type: String,
       },
     },
+    category: {
+      type: String,
+      enum: ["Tin tức", "Đánh giá xe", "Tư vấn", "So sánh"],
+      default: "Tin tức",
+    },
     tags: {
       type: [String],
       default: [],
@@ -31,6 +40,15 @@ const newsSchema = new mongoose.Schema(
     featured: {
       type: Boolean,
       default: false,
+    },
+    status: {
+      type: String,
+      enum: ["draft", "published"],
+      default: "draft",
+    },
+    views: {
+      type: Number,
+      default: 0,
     },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,

@@ -27,11 +27,42 @@ const userSchema = new mongoose.Schema(
       trim: true,
       match: [/^[0-9]{10,11}$/, "Số điện thoại không hợp lệ"],
     },
+    address: {
+      type: String,
+      trim: true,
+    },
     role: {
       type: String,
-      enum: ["user", "admin"],
+      enum: ["user", "dealer", "admin"],
       default: "user",
     },
+    status: {
+      type: String,
+      enum: ["active", "inactive"],
+      default: "active",
+    },
+    bio: {
+      type: String,
+      trim: true,
+    },
+    carInterests: {
+      type: [String],
+      default: [],
+    },
+    purchaseHistory: [
+      {
+        carId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Car",
+        },
+        carName: String,
+        purchaseDate: {
+          type: Date,
+          default: Date.now,
+        },
+        price: Number,
+      },
+    ],
     createdAt: {
       type: Date,
       default: Date.now,

@@ -32,22 +32,45 @@ const carSchema = new mongoose.Schema(
     fuel: {
       type: String,
       required: [true, "Vui lòng nhập loại nhiên liệu"],
-      enum: ["Gasoline", "Diesel", "Electric", "Hybrid", "Xăng", "Dầu", "Điện", "Hybrid"],
+      enum: [
+        "Gasoline",
+        "Diesel",
+        "Electric",
+        "Hybrid",
+        "Xăng",
+        "Dầu",
+        "Điện",
+        "Hybrid",
+        "gasoline",
+        "diesel",
+        "electric",
+        "hybrid",
+      ],
     },
     transmission: {
       type: String,
       required: [true, "Vui lòng nhập loại hộp số"],
-      enum: ["Manual", "Automatic", "Semi-Automatic", "Số sàn", "Số tự động", "Bán tự động"],
+      enum: [
+        "Manual",
+        "Automatic",
+        "Semi-Automatic",
+        "Số sàn",
+        "Số tự động",
+        "Bán tự động",
+        "manual",
+        "automatic",
+        "cvt",
+      ],
     },
     type: {
       type: String,
       required: [true, "Vui lòng nhập loại xe"],
-      enum: ["Sedan", "SUV", "Hatchback", "Coupe", "Convertible", "Pickup", "Van", "Minivan", "Wagon"],
+      enum: ["Sedan", "SUV", "Hatchback", "Coupe", "Convertible", "Pickup", "Van", "Minivan", "Wagon", "new", "used"],
     },
     status: {
       type: String,
       required: [true, "Vui lòng nhập trạng thái xe"],
-      enum: ["New", "Used", "Mới", "Đã qua sử dụng"],
+      enum: ["New", "Used", "Mới", "Đã qua sử dụng", "active", "pending", "rejected"],
     },
     description: {
       type: String,
@@ -69,6 +92,14 @@ const carSchema = new mongoose.Schema(
       email: {
         type: String,
       },
+      location: {
+        type: String,
+      },
+      type: {
+        type: String,
+        enum: ["Cá nhân", "Đại lý"],
+        default: "Cá nhân",
+      },
     },
     images: [
       {
@@ -83,6 +114,24 @@ const carSchema = new mongoose.Schema(
     featured: {
       type: Boolean,
       default: false,
+    },
+    color: {
+      type: String,
+      default: "Không xác định",
+    },
+    seats: {
+      type: Number,
+      default: 5,
+    },
+    engine: {
+      type: String,
+    },
+    location: {
+      type: String,
+    },
+    views: {
+      type: Number,
+      default: 0,
     },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,

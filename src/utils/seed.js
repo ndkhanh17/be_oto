@@ -65,6 +65,7 @@ const users = [
 const dealerships = [
   {
     name: "Toyota Hà Nội",
+    brand: "Lexus",
     address: "Số 15 Phạm Hùng",
     city: "Hà Nội",
     state: "Hà Nội",
@@ -76,6 +77,7 @@ const dealerships = [
   },
   {
     name: "Honda Sài Gòn",
+    brand: "Lexus",
     address: "Số 123 Nguyễn Văn Linh",
     city: "Hồ Chí Minh",
     state: "Hồ Chí Minh",
@@ -87,6 +89,7 @@ const dealerships = [
   },
   {
     name: "Ford Đà Nẵng",
+    brand: "Lexus",
     address: "Số 45 Nguyễn Tất Thành",
     city: "Đà Nẵng",
     state: "Đà Nẵng",
